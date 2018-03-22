@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace TyNi.Wedding.AuthApi.Models
+namespace TyNi.Wedding.AuthApi.DomainModels.Auth
 {
     public class User
     {

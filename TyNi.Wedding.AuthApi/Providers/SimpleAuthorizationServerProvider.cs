@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security.OAuth;
-using TyNi.Wedding.AuthApi.Models;
+using TyNi.Wedding.AuthApi.DomainModels;
 
 namespace TyNi.Wedding.AuthApi.Providers
 {

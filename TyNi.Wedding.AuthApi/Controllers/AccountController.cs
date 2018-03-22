@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
-using TyNi.Wedding.AuthApi.Models;
+using TyNi.Wedding.AuthApi.DomainModels;
 
 namespace TyNi.Wedding.AuthApi.Controllers
 {

@@ -1,0 +1,6 @@
+C:\Users\tyron\source\repos\TyNi-Wedding\TyNi.Wedding.Domain\bin\Debug\netstandard2.0\TyNi.Wedding.Domain.deps.json
+C:\Users\tyron\source\repos\TyNi-Wedding\TyNi.Wedding.Domain\bin\Debug\netstandard2.0\TyNi.Wedding.Domain.dll
+C:\Users\tyron\source\repos\TyNi-Wedding\TyNi.Wedding.Domain\obj\Debug\netstandard2.0\TyNi.Wedding.Domain.csprojResolveAssemblyReference.cache
+C:\Users\tyron\source\repos\TyNi-Wedding\TyNi.Wedding.Domain\obj\Debug\netstandard2.0\TyNi.Wedding.Domain.csproj.CoreCompileInputs.cache
+C:\Users\tyron\source\repos\TyNi-Wedding\TyNi.Wedding.Domain\obj\Debug\netstandard2.0\TyNi.Wedding.Domain.AssemblyInfoInputs.cache
+C:\Users\tyron\source\repos\TyNi-Wedding\TyNi.Wedding.Domain\obj\Debug\netstandard2.0\TyNi.Wedding.Domain.AssemblyInfo.cs
