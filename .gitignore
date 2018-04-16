@@ -1,1 +1,4 @@
 .vs/
+*.user
+TyNi.Wedding/bin/
+TyNi.Wedding/obj/
