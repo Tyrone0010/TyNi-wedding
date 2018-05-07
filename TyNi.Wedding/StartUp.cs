@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Linq;
 using System.Net.Http.Formatting;
 using System.Web.Http;
+using TyNi.Wedding.App_Start;
 using TyNi.Wedding.Infrastructure;
 using TyNi.Wedding.Providers;
 
@@ -19,6 +20,7 @@ namespace TyNi.Wedding
     {
         public void Configuration(IAppBuilder app)
         {
+
             HttpConfiguration httpConfig = new HttpConfiguration();
 
             ConfigureOAuthTokenGeneration(app);
@@ -79,6 +81,7 @@ namespace TyNi.Wedding
 
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            //jsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         }
     }
 }

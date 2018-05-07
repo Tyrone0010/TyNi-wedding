@@ -1,14 +1,12 @@
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
+using System.Data.Entity.Migrations;
+using TyNi.Wedding.Infrastructure;
+
 namespace TyNi.Wedding.Migrations
 {
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-    using TyNi.Wedding.Infrastructure;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<TyNi.Wedding.Infrastructure.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
