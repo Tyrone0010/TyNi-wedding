@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
-using TyNi.Wedding.ExternalProvidersApiServices.Quote;
+using AutoMapper.Configuration.Conventions;
+using TyNi.Wedding.ExternalProvidersApiServices.PriceTariff;
 using TyNi.Wedding.Infrastructure;
+using TyNi.Wedding.ViewModels.Response;
 
 namespace TyNi.Wedding.ExternalProvidersApiServices.Customer
 {
-    public class PriceTariffManager : IPackageManager
+    public class PriceTariffManager : IPriceTariffManager
     {
         private readonly ApplicationDbContext _context;
 
@@ -15,15 +18,33 @@ namespace TyNi.Wedding.ExternalProvidersApiServices.Customer
             _context = new ApplicationDbContext();
         }
 
-        public Infrastructure.Models.PriceTariff GetPackage(DateTime weddingDate, int venue)
+        public PackageVm GetPackage(DateTime weddingDate, int venue)
         {
-            var priceTariffs = _context.PriceTariffs.Where(p => p.ActiveFrom>=weddingDate && p.ActiveTo <= weddingDate && p.Venues.Select(v => v.Id).Contains(venue));
-            foreach (var priceTariff in priceTariffs)
+            var dayOfWeek = (int) weddingDate.DayOfWeek;
+
+            var priceTariffPeriods = _context.PriceTariffPeriods
+                .Include(ptd => ptd.PriceTariffPeriodDays)
+                .Include(pt => pt.PriceTariff)
+                .Where(p => p.ActiveFrom <= weddingDate && 
+                            p.ActiveTo >= weddingDate &&
+                            p.PriceTariff.Venues.Any(x => x.Id.Equals(venue)))
+                .ToList();
+
+            foreach (var priceTariffPeriod in priceTariffPeriods)
             {
-                var includedDays = priceTariff.IncludedDays.Select(x => x.DayOfWeek).ToArray().Cast<int>();
-                if (includedDays.Contains(weddingDate.Day))
+                var includedDay = priceTariffPeriod.PriceTariffPeriodDays.SingleOrDefault(x => dayOfWeek.Equals((int)x.DayOfWeek));
+                if (includedDay != null)
                 {
-                    return priceTariff;
+                    return new PackageVm
+                    {
+                        Blurb = "",
+                        Date = weddingDate,
+                        ImageUrl = "",
+                        Name = priceTariffPeriod.PriceTariff.Name,
+                        Price = includedDay.Price,
+                        RateDescription = priceTariffPeriod.Name,
+                        Day = weddingDate.DayOfWeek.ToString()
+                    };
                 }
             }
 

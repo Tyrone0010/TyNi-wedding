@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Http;
 using TyNi.Wedding.ExternalProvidersApiServices.Customer;
+using TyNi.Wedding.ExternalProvidersApiServices.PriceTariff;
 using TyNi.Wedding.ExternalProvidersApiServices.Quote;
 using TyNi.Wedding.ViewModels.Request;
 

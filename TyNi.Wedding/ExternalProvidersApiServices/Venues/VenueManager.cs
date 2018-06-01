@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Linq;
-using TyNi.Wedding.ExternalProvidersApiServices.Quote;
 using TyNi.Wedding.Infrastructure;
-using TyNi.Wedding.ViewModels.Request;
+using TyNi.Wedding.ViewModels.Response;
 
 namespace TyNi.Wedding.ExternalProvidersApiServices.Venues
 {
@@ -19,9 +16,19 @@ namespace TyNi.Wedding.ExternalProvidersApiServices.Venues
         }
 
         //Todo: implement a client entity
-        public List<Infrastructure.Models.Venue> GetVenues(int clientId)
+        public List<VenueVm> GetVenues(int clientId)
         {
-            return _context.Venues.Select(q => q).ToList();
+            var returnVenues = new List<VenueVm>();
+            foreach (var venue in _context.Venues.Select(q => q))
+            {
+                returnVenues.Add(new VenueVm
+                {
+                    id = venue.Id,
+                    name = venue.Name
+                });
+            }
+
+            return returnVenues;
         }
     }
 }

@@ -14,8 +14,7 @@ namespace TyNi.Wedding.Infrastructure.Models
 
         public byte[] Image { get; set; }
 
-        public ICollection<PriceTariff> PriceTariffs {get;set;}
+        public virtual ICollection<PriceTariff> PriceTariffs {get;set;}
 
-        public ICollection<Menu> Menus { get; set; }
     }
 }

@@ -1,8 +1,12 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Http;
+using Newtonsoft.Json;
 using TyNi.Wedding.ExternalProvidersApiServices.Customer;
 using TyNi.Wedding.ExternalProvidersApiServices.Quote;
 using TyNi.Wedding.ExternalProvidersApiServices.Venues;
 using TyNi.Wedding.ViewModels.Request;
+using TyNi.Wedding.ViewModels.Response;
 
 namespace TyNi.Wedding.Controllers
 {
@@ -24,10 +28,11 @@ namespace TyNi.Wedding.Controllers
         [AllowAnonymous]
         [HttpGet]
         //Todo: implement client entity
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get()
         {
-            var results = _venueManager.GetVenues(id);
-            return Ok(results);
+            //get the current user so we can use thier id to get the venues
+            var results = _venueManager.GetVenues(0);
+            return Json(results);
         }
 
     }

@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using TyNi.Wedding.ViewModels.Request;
+using TyNi.Wedding.ViewModels.Response;
 
-namespace TyNi.Wedding.ExternalProvidersApiServices.Quote
+namespace TyNi.Wedding.ExternalProvidersApiServices.PriceTariff
 {
-    public interface IPackageManager
+    public interface IPriceTariffManager
     {
-        Infrastructure.Models.PriceTariff GetPackage(DateTime weddingDate, int venue);
+        PackageVm GetPackage(DateTime weddingDate, int venue);
     }
 }

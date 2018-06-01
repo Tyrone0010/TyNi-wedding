@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 using TyNi.Wedding.ExternalProvidersApiServices.Customer;
-using TyNi.Wedding.ExternalProvidersApiServices.Quote;
+using TyNi.Wedding.ExternalProvidersApiServices.PriceTariff;
 using TyNi.Wedding.ViewModels.Request;
 
 namespace TyNi.Wedding.Controllers
@@ -8,24 +8,24 @@ namespace TyNi.Wedding.Controllers
     [RoutePrefix("api/calculatepackage")]
     public class CalculatePackageController : BaseApiController
     {
-        private readonly IQuoteManager _quoteManager;
+        private readonly IPriceTariffManager _priceTariffManager;
 
         public CalculatePackageController()
         {
-            _quoteManager = new QuoteManager();
+            _priceTariffManager = new PriceTariffManager();
         }
 
-        public CalculatePackageController(IQuoteManager quoteManager)
+        public CalculatePackageController(IPriceTariffManager quoteManager)
         {
-            _quoteManager = quoteManager;
+            _priceTariffManager = quoteManager;
         }
 
-        //[AllowAnonymous]
-        //[HttpGet]
-        //public IHttpActionResult Get([FromBody] CalculatePackageModel requestData)
-        //{
-        //    return Ok(_quoteManager.QuoteSearch(searchRequest));
-        //}
+        [AllowAnonymous]
+        [HttpGet]
+        public IHttpActionResult Get([FromUri] CalculatePackageModel requestData)
+        {
+            return Json(_priceTariffManager.GetPackage(requestData.WeddingDate, requestData.Venue));
+        }
 
     }
 }

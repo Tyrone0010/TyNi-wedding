@@ -1,7 +1,6 @@
 ﻿using System.Web.Http;
 using TyNi.Wedding.ExternalProvidersApiServices.Customer;
-using TyNi.Wedding.ExternalProvidersApiServices.Quote;
-using TyNi.Wedding.ViewModels.Request;
+using TyNi.Wedding.ExternalProvidersApiServices.Menus;
 
 namespace TyNi.Wedding.Controllers
 {
@@ -20,6 +19,11 @@ namespace TyNi.Wedding.Controllers
             _menuManager = menuManager;
         }
 
+        /// <summary>
+        /// gets all menus for a specific venue.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpGet]
         public IHttpActionResult Get(int id)

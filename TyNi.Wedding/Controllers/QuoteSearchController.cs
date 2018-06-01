@@ -8,24 +8,24 @@ namespace TyNi.Wedding.Controllers
     [RoutePrefix("api/quotesearch")]
     public class QuoteSearchController : BaseApiController
     {
-        private readonly IQuoteManager _quoteManager;
+        //private readonly IPriceTariffManager _quoteManager;
 
-        public QuoteSearchController()
-        {
-            _quoteManager = new QuoteManager();
-        }
+        //public QuoteSearchController()
+        //{
+        //    _quoteManager = new QuoteManager();
+        //}
 
-        public QuoteSearchController(IQuoteManager quoteManager)
-        {
-            _quoteManager = quoteManager;
-        }
+        //public QuoteSearchController(IPriceTariffManager quoteManager)
+        //{
+        //    _quoteManager = quoteManager;
+        //}
 
-        [AllowAnonymous]
-        [HttpPost]
-        public IHttpActionResult Post([FromBody] QuoteSearchModel searchRequest)
-        {
-            return Ok(_quoteManager.QuoteSearch(searchRequest));
-        }
+        //[AllowAnonymous]
+        //[HttpPost]
+        //public IHttpActionResult Post([FromBody] QuoteSearchModel searchRequest)
+        //{
+        //    return Ok(_quoteManager.QuoteSearch(searchRequest));
+        //}
 
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.Owin;
 using System.Net.Http;
 using System.Web.Http;
+using Newtonsoft.Json.Serialization;
 using TyNi.Wedding.Infrastructure;
 using TyNi.Wedding.Models;
 
@@ -31,6 +32,10 @@ namespace TyNi.Wedding.Controllers
 
         public BaseApiController()
         {
+            var formatters = GlobalConfiguration.Configuration.Formatters;
+            var jsonFormatter = formatters.JsonFormatter;
+            var settings = jsonFormatter.SerializerSettings;
+            settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
 
         protected ModelFactory TheModelFactory

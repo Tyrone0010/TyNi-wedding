@@ -172,6 +172,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\ApplicationDbContext.cs" />
+    <Compile Include="Infrastructure\Enums\MenuType.cs" />
     <Compile Include="Infrastructure\Enums\ContactType.cs" />
     <Compile Include="Infrastructure\Enums\DayOfWeek.cs" />
     <Compile Include="Infrastructure\Models\ApplicationUser.cs" />
@@ -183,21 +184,51 @@
     <Compile Include="Infrastructure\Models\Customer.cs" />
     <Compile Include="Infrastructure\Models\CustomerAddress.cs" />
     <Compile Include="Infrastructure\Models\CustomerContactMethod.cs" />
-    <Compile Include="Infrastructure\Models\IncludedDay.cs" />
     <Compile Include="Infrastructure\Models\Menu.cs" />
     <Compile Include="Infrastructure\Models\MenuItem.cs" />
     <Compile Include="Infrastructure\Models\MenuSection.cs" />
     <Compile Include="Infrastructure\Models\PriceTariff.cs" />
     <Compile Include="Infrastructure\Models\Quote.cs" />
+    <Compile Include="Infrastructure\Models\PriceTariffPeriod.cs" />
+    <Compile Include="Infrastructure\Models\PriceTariffPeriodDay.cs" />
     <Compile Include="Infrastructure\Models\Venue.cs" />
     <Compile Include="Migrations\201804291549551_initial-create.cs" />
     <Compile Include="Migrations\201804291549551_initial-create.Designer.cs">
       <DependentUpon>201804291549551_initial-create.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805130901442_refactored tables around tariff.cs" />
+    <Compile Include="Migrations\201805130901442_refactored tables around tariff.Designer.cs">
+      <DependentUpon>201805130901442_refactored tables around tariff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805240640063_ChangesToMenuStructure.cs" />
+    <Compile Include="Migrations\201805240640063_ChangesToMenuStructure.Designer.cs">
+      <DependentUpon>201805240640063_ChangesToMenuStructure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805241617529_menu-update-for-menu-type.cs" />
+    <Compile Include="Migrations\201805241617529_menu-update-for-menu-type.Designer.cs">
+      <DependentUpon>201805241617529_menu-update-for-menu-type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805241624097_removed venues collection from menu and replace with single venue.cs" />
+    <Compile Include="Migrations\201805241624097_removed venues collection from menu and replace with single venue.Designer.cs">
+      <DependentUpon>201805241624097_removed venues collection from menu and replace with single venue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805261258115_Changed menu structure again to self referencing sections.cs" />
+    <Compile Include="Migrations\201805261258115_Changed menu structure again to self referencing sections.Designer.cs">
+      <DependentUpon>201805261258115_Changed menu structure again to self referencing sections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805271550142_children property on menu section.cs" />
+    <Compile Include="Migrations\201805271550142_children property on menu section.Designer.cs">
+      <DependentUpon>201805271550142_children property on menu section.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805290852465_updated menu with required field which can be used for validation .cs" />
+    <Compile Include="Migrations\201805290852465_updated menu with required field which can be used for validation .Designer.cs">
+      <DependentUpon>201805290852465_updated menu with required field which can be used for validation .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\Request\AccountBindingModels.cs" />
     <Compile Include="ViewModels\Request\CalculatePackageModel.cs" />
     <Compile Include="ViewModels\Request\QuoteSearchModel.cs" />
+    <Compile Include="ViewModels\Response\BaseMenuSection.cs" />
     <Compile Include="ViewModels\Response\CustomerVm.cs" />
     <Compile Include="ViewModels\ModelFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -207,6 +238,11 @@
     <Compile Include="StartUp.cs" />
     <Compile Include="Validators\MyCustomPasswordValidator.cs" />
     <Compile Include="Validators\MyCustomUserValidator.cs" />
+    <Compile Include="ViewModels\Response\ChildMenuSectionVm.cs" />
+    <Compile Include="ViewModels\Response\TopMenuSectionVm.cs" />
+    <Compile Include="ViewModels\Response\MenuVm.cs" />
+    <Compile Include="ViewModels\Response\PackageVm.cs" />
+    <Compile Include="ViewModels\Response\VenueVm.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -224,6 +260,27 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201804291549551_initial-create.resx">
       <DependentUpon>201804291549551_initial-create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805130901442_refactored tables around tariff.resx">
+      <DependentUpon>201805130901442_refactored tables around tariff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805240640063_ChangesToMenuStructure.resx">
+      <DependentUpon>201805240640063_ChangesToMenuStructure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805241617529_menu-update-for-menu-type.resx">
+      <DependentUpon>201805241617529_menu-update-for-menu-type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805241624097_removed venues collection from menu and replace with single venue.resx">
+      <DependentUpon>201805241624097_removed venues collection from menu and replace with single venue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805261258115_Changed menu structure again to self referencing sections.resx">
+      <DependentUpon>201805261258115_Changed menu structure again to self referencing sections.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805271550142_children property on menu section.resx">
+      <DependentUpon>201805271550142_children property on menu section.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805290852465_updated menu with required field which can be used for validation .resx">
+      <DependentUpon>201805290852465_updated menu with required field which can be used for validation .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

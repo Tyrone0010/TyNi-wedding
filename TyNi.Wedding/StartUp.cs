@@ -7,10 +7,7 @@ using Newtonsoft.Json.Serialization;
 using Owin;
 using System;
 using System.Configuration;
-using System.Linq;
-using System.Net.Http.Formatting;
 using System.Web.Http;
-using TyNi.Wedding.App_Start;
 using TyNi.Wedding.Infrastructure;
 using TyNi.Wedding.Providers;
 
@@ -21,7 +18,7 @@ namespace TyNi.Wedding
         public void Configuration(IAppBuilder app)
         {
 
-            HttpConfiguration httpConfig = new HttpConfiguration();
+            HttpConfiguration httpConfig = GlobalConfiguration.Configuration;
 
             ConfigureOAuthTokenGeneration(app);
 
@@ -77,11 +74,18 @@ namespace TyNi.Wedding
 
         private void ConfigureWebApi(HttpConfiguration config)
         {
-            config.MapHttpAttributeRoutes();
+            var formatters = GlobalConfiguration.Configuration.Formatters;
+            var jsonFormatter = formatters.JsonFormatter;
+            var settings = jsonFormatter.SerializerSettings;
+            settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
-            var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
-            jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            //jsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            //var contractResolver =
+            //    new CamelCasePropertyNamesContractResolver {NamingStrategy = new CamelCaseNamingStrategy()};
+            //config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = contractResolver;
+            //config.Formatters.JsonFormatter.UseDataContractJsonSerializer = true;
+            //config.Formatters.JsonFormatter
+            //    .SerializerSettings
+            //    .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using TyNi.Wedding.ViewModels.Response;
 
-namespace TyNi.Wedding.ExternalProvidersApiServices.Quote
+namespace TyNi.Wedding.ExternalProvidersApiServices.Menus
 {
     public interface IMenuManager
     {
-        List<Infrastructure.Models.Menu> GetMenusForVenue(int venueId);
+        List<MenuVm> GetMenusForVenue(int venueId);
     }
 }

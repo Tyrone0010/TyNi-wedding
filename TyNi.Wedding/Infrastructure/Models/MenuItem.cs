@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 using TyNi.Wedding.Infrastructure.Models.Base;
 
 namespace TyNi.Wedding.Infrastructure.Models
@@ -17,6 +18,7 @@ namespace TyNi.Wedding.Infrastructure.Models
         [Required]
         public int Order { get; set; }
 
-        public MenuSection MenuSection { get; set; }
+        [JsonIgnore]
+        public virtual MenuSection MenuSection { get; set; }
     }
 }
