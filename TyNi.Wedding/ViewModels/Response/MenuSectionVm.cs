@@ -2,12 +2,12 @@
 
 namespace TyNi.Wedding.ViewModels.Response
 {
-    public class MenuVm
+    public class MenuSectionVm
     {
         public int id { get; set; }
+        public decimal price { get; set; }
         public string name { get; set; }
-        public int menuType { get; set; }
-        public bool isRequired { get; set; }
-
+        public int? parentId { get; set; }
+        public int? menuId { get; set; }
     }
 }

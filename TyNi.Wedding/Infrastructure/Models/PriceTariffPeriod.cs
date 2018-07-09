@@ -15,6 +15,6 @@ namespace TyNi.Wedding.Infrastructure.Models
         public DateTime ActiveTo { get; set; }
 
         public PriceTariff PriceTariff { get; set; }
-        public ICollection<PriceTariffPeriodDay> PriceTariffPeriodDays { get; set; }
+        public virtual ICollection<PriceTariffPeriodDay> PriceTariffPeriodDays { get; set; }
     }
 }

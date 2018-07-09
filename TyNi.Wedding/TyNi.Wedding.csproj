@@ -154,6 +154,8 @@
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\QuoteController.cs" />
     <Compile Include="Controllers\CalculatePackageController.cs" />
+    <Compile Include="Controllers\VenueMenuItemsController.cs" />
+    <Compile Include="Controllers\VenueSectionsController.cs" />
     <Compile Include="Controllers\VenuesController.cs" />
     <Compile Include="Controllers\VenueMenusController.cs" />
     <Compile Include="Controllers\QuoteSearchController.cs" />
@@ -186,6 +188,7 @@
     <Compile Include="Infrastructure\Models\CustomerContactMethod.cs" />
     <Compile Include="Infrastructure\Models\Menu.cs" />
     <Compile Include="Infrastructure\Models\MenuItem.cs" />
+    <Compile Include="ViewModels\Response\MenuItemVm.cs" />
     <Compile Include="Infrastructure\Models\MenuSection.cs" />
     <Compile Include="Infrastructure\Models\PriceTariff.cs" />
     <Compile Include="Infrastructure\Models\Quote.cs" />
@@ -228,7 +231,7 @@
     <Compile Include="ViewModels\Request\AccountBindingModels.cs" />
     <Compile Include="ViewModels\Request\CalculatePackageModel.cs" />
     <Compile Include="ViewModels\Request\QuoteSearchModel.cs" />
-    <Compile Include="ViewModels\Response\BaseMenuSection.cs" />
+    <Compile Include="ViewModels\Response\MenuSectionVm.cs" />
     <Compile Include="ViewModels\Response\CustomerVm.cs" />
     <Compile Include="ViewModels\ModelFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -238,8 +241,6 @@
     <Compile Include="StartUp.cs" />
     <Compile Include="Validators\MyCustomPasswordValidator.cs" />
     <Compile Include="Validators\MyCustomUserValidator.cs" />
-    <Compile Include="ViewModels\Response\ChildMenuSectionVm.cs" />
-    <Compile Include="ViewModels\Response\TopMenuSectionVm.cs" />
     <Compile Include="ViewModels\Response\MenuVm.cs" />
     <Compile Include="ViewModels\Response\PackageVm.cs" />
     <Compile Include="ViewModels\Response\VenueVm.cs" />

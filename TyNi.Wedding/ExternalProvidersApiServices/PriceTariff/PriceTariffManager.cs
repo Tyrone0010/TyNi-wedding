@@ -25,9 +25,10 @@ namespace TyNi.Wedding.ExternalProvidersApiServices.Customer
             var priceTariffPeriods = _context.PriceTariffPeriods
                 .Include(ptd => ptd.PriceTariffPeriodDays)
                 .Include(pt => pt.PriceTariff)
-                .Where(p => p.ActiveFrom <= weddingDate && 
-                            p.ActiveTo >= weddingDate &&
-                            p.PriceTariff.Venues.Any(x => x.Id.Equals(venue)))
+                .Where(p => p.ActiveFrom <= weddingDate 
+                            && p.ActiveTo >= weddingDate 
+                            && p.PriceTariff.Venues.Any(x => x.Id.Equals(venue))
+                      )
                 .ToList();
 
             foreach (var priceTariffPeriod in priceTariffPeriods)
