@@ -12,13 +12,13 @@ namespace TyNi.Wedding.Controllers
     {
 
         private ModelFactory _modelFactory;
-        private ApplicationUserManager _AppUserManager = null;
+        private readonly ApplicationUserManager _appUserManager = null;
 
         protected ApplicationUserManager AppUserManager
         {
             get
             {
-                return _AppUserManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                return _appUserManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
         }
 
@@ -44,7 +44,7 @@ namespace TyNi.Wedding.Controllers
             {
                 if (_modelFactory == null)
                 {
-                    _modelFactory = new ModelFactory(this.Request, this.AppUserManager);
+                    _modelFactory = new ModelFactory(Request, this.AppUserManager);
                 }
                 return _modelFactory;
             }

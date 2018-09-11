@@ -7,26 +7,27 @@ using TyNi.Wedding.ViewModels.Request;
 
 namespace TyNi.Wedding.Controllers
 {
-    [RoutePrefix("api/quote")]
-    public class QuoteController : BaseApiController
+    [RoutePrefix("api/calculatequote")]
+    public class CalculateQuoteController : BaseApiController
     {
         private readonly IQuoteManager _quoteManager;
 
-        public QuoteController()
+        public CalculateQuoteController()
         {
             _quoteManager = new QuoteManager();
         }
 
-        public QuoteController(IQuoteManager quoteManager)
+        public CalculateQuoteController(IQuoteManager quoteManager)
         {
             _quoteManager = quoteManager;
         }
 
         [AllowAnonymous]
-        [HttpGet]
-        public IHttpActionResult Get(Guid id)
+        [HttpPost]
+        public IHttpActionResult Post([FromBody]CalculateQuoteModel model)
         {
-            return Ok(_quoteManager.GetQuote(id));
+            return Ok(_quoteManager.CalculateQuote(model));
         }
+
     }
 }

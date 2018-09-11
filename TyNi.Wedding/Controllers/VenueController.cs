@@ -12,17 +12,17 @@ using TyNi.Wedding.ViewModels.Response;
 
 namespace TyNi.Wedding.Controllers
 {
-    [RoutePrefix("api/venues")]
-    public class VenuesController : BaseApiController
+    [RoutePrefix("api/venue")]
+    public class VenueController : BaseApiController
     {
         private readonly IVenueManager _venueManager;
 
-        public VenuesController()
+        public VenueController()
         {
             _venueManager = new VenueManager();
         }
 
-        public VenuesController(IVenueManager venueManager)
+        public VenueController(IVenueManager venueManager)
         {
             _venueManager = venueManager;
         }
@@ -30,11 +30,12 @@ namespace TyNi.Wedding.Controllers
         [AllowAnonymous]
         [HttpGet]
         //Todo: implement client entity
-        public IHttpActionResult Get()
+        public IHttpActionResult Get(int id)
         {
             //get the current user so we can use thier id to get the venues
-            var results = _venueManager.GetVenues(0);
-            return Json(results);
+            //var results = _venueManager.GetVenues(0);
+            //return Json(results);
+            return Ok();
         }
 
         [AllowAnonymous]
@@ -43,7 +44,6 @@ namespace TyNi.Wedding.Controllers
         {
             return Ok(_venueManager.AddVenue(venueModel));
         }
-
         [AllowAnonymous]
         [HttpPut]
         public IHttpActionResult Put(Guid id)

@@ -18,6 +18,12 @@ namespace TyNi.Wedding.ExternalProvidersApiServices.Customer
             _context = new ApplicationDbContext();
         }
 
+        public PriceTariffManager(ApplicationDbContext context)
+        {
+            //change when IOC is introduced
+            _context = context;
+        }
+
         public PackageVm GetPackage(DateTime weddingDate, int venue)
         {
             var dayOfWeek = (int) weddingDate.DayOfWeek;

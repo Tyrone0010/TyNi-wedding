@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TyNi.Wedding.ViewModels.Request;
+using TyNi.Wedding.ViewModels.Response;
 
 namespace TyNi.Wedding.ExternalProvidersApiServices.Quote
 {
@@ -8,5 +9,6 @@ namespace TyNi.Wedding.ExternalProvidersApiServices.Quote
     {
         Wedding.Infrastructure.Models.Quote GetQuote(Guid id);
         IList<Infrastructure.Models.Customer> QuoteSearch(QuoteSearchModel searchModel);
+        QuoteSummaryVm CalculateQuote(CalculateQuoteModel model);
     }
 }

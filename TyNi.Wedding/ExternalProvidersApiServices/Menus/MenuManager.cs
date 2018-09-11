@@ -18,6 +18,24 @@ namespace TyNi.Wedding.ExternalProvidersApiServices.Menus
             _context = new ApplicationDbContext();
         }
 
+        public MenuManager(ApplicationDbContext context)
+        {
+            //change when IOC is introduced
+            _context = context;
+        }
+
+        public MenuSummaryVm GetMenu(int id)
+        {
+            var menuSection = _context.MenuSections.Include(m => m.Menu).SingleOrDefault(x => x.Id == id);
+            return new MenuSummaryVm
+            {
+                Id = menuSection.Menu.Id,
+                Price = menuSection.Price,
+                MenuName = menuSection.Menu.Title,
+                SectionName = menuSection.Title
+            };
+        }
+
         public List<MenuVm> GetMenusForVenue(int venueId)
         {
 
