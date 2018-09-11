@@ -56,6 +56,7 @@ namespace TyNi.Wedding.ExternalProvidersApiServices.Customer
             //returnModel.VenueName = package.
             returnModel.VenuePrice = package.Price;
             returnModel.VenueName = _venueManager.GetVenue(model.VenueId).name;
+            returnModel.WeddingDate = model.WeddingDate;
             foreach (var sectionId in model.MenuSections)
             {
                 var menu = _menuManager.GetMenu(sectionId);
