@@ -7,6 +7,7 @@ namespace TyNi.Wedding.ViewModels.Response
     {
         public string VenueName { get; set; }
         public decimal VenuePrice { get; set; }
+        public DateTime WeddingDate { get; set; }
 
         public decimal TotalPrice
         {
